@@ -1,8 +1,4 @@
 @import "tailwindcss";
-@import "@fontsource/newsreader/500.css";
-@import "@fontsource/ibm-plex-sans/400.css";
-@import "@fontsource/ibm-plex-sans/500.css";
-@import "@fontsource/ibm-plex-mono/400.css";
 
 :root {
   color-scheme: light dark;
@@ -32,7 +28,7 @@
   --color-line: var(--line);
   --color-link: var(--link);
   --color-link-hover: var(--link-hover);
-  --font-serif: "Newsreader", serif;
-  --font-sans: "IBM Plex Sans", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
+  --font-serif: var(--font-newsreader);
+  --font-sans: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
 }
