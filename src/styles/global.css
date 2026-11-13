@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@import "@fontsource/newsreader/500.css";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+
+:root {
+  color-scheme: light dark;
+  --bg: #f4f6f3;
+  --text: #16201b;
+  --muted: #55615a;
+  --line: #c9d0ca;
+  --link: #1f5e46;
+  --link-hover: #123b2c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121715;
+    --text: #e6eae6;
+    --muted: #9aa59e;
+    --line: #2e3833;
+    --link: #7fcfa9;
+    --link-hover: #b5e6cd;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--text);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
+  --font-serif: "Newsreader", serif;
+  --font-sans: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
