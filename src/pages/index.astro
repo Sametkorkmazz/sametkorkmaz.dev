@@ -1,16 +1,97 @@
 ---
+import Entry from "../components/Entry.astro";
+import Section from "../components/Section.astro";
+import { contact, intro, jobs, projects } from "../data/site";
+import Base from "../layouts/Base.astro";
+import { link } from "../styles/classes";
+const updated = new Date().toLocaleDateString("en-US", {
+  month: "long",
+  year: "numeric",
+});
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base
+  title="Samet Korkmaz – Full-stack developer"
+  description="Full-stack developer at Yapı Kredi (Java, Spring Boot, React). Building a multi-currency wallet on a double-entry ledger."
+>
+  <header
+    class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 text-[13px]"
+  >
+    <span class="font-mono text-muted">sametkorkmaz.dev</span>
+    <nav class="flex flex-wrap gap-5" aria-label="Sections">
+      <a class={`${link} inline-block py-3`} href="#projects">Projects</a>
+      <a class={`${link} inline-block py-3`} href="#experience">Experience</a>
+      <a class={`${link} inline-block py-3`} href="#contact">Contact</a>
+    </nav>
+  </header>
+  <h1
+    class="mt-10 font-serif text-[42px] leading-tight font-medium sm:text-[52px]"
+  >
+    Samet Korkmaz
+  </h1>
+  <p class="mt-4">{intro}</p>
+
+  <Section id="projects" label="Projects" aside="Status">
+    {
+      projects.map((p) => (
+        <Entry title={p.name} meta={p.status}>
+          <p class="mt-2">{p.description}</p>
+          <p class="mt-2 font-mono text-[13px] text-muted">{p.stack}</p>
+          <p class="mt-3">
+            {p.links.map((l, i) => (
+              <>
+                {i > 0 && " · "}
+                <a class={link} href={l.href}>
+                  {l.label}
+                </a>
+              </>
+            ))}
+          </p>
+        </Entry>
+      ))
+    }
+  </Section>
+  <Section id="experience" label="Experience" aside="Period">
+    {
+      jobs.map((job) => (
+        <Entry title={job.company} meta={job.period}>
+          <p class="mt-1 text-muted">{job.role}</p>
+          {job.groups.map((group) => (
+            <>
+              <h4 class="mt-4 font-medium">{group.title}</h4>
+              <ul class="mt-1 list-disc space-y-1 pl-5">
+                {group.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </>
+          ))}
+        </Entry>
+      ))
+    }
+  </Section>
+
+  <Section id="contact" label="Contact">
+    <ul class="flex flex-wrap gap-x-6 border-b border-line pt-4 pb-6">
+      <li>
+        <a class={`${link} inline-block py-2`} href={`mailto:${contact.email}`}
+          >{contact.email}</a
+        >
+      </li>
+      <li>
+        <a class={`${link} inline-block py-2`} rel="me" href={contact.github}
+          >GitHub</a
+        >
+      </li>
+      <li>
+        <a class={`${link} inline-block py-2`} rel="me" href={contact.linkedin}>
+          LinkedIn
+        </a>
+      </li>
+    </ul>
+  </Section>
+
+  <footer class="mt-16 font-mono text-[13px] text-muted">
+    Last updated {updated}
+  </footer>
+</Base>

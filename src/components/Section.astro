@@ -1,0 +1,26 @@
+---
+type Props = {
+  label: string;
+  aside?: string;
+  id?: string;
+};
+const { label, aside, id } = Astro.props;
+---
+
+<section id={id} class="mt-14">
+  <div
+    class="flex items-baseline justify-between border-t-2 border-b border-t-fg border-b-line py-2"
+  >
+    <h2 class="font-mono text-xs tracking-wide text-muted uppercase">
+      {label}
+    </h2>
+    {
+      aside && (
+        <span class="font-mono text-xs tracking-wide text-muted uppercase">
+          {aside}
+        </span>
+      )
+    }
+  </div>
+  <slot />
+</section>
