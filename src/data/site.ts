@@ -76,7 +76,7 @@ export const jobs: Job[] = [
 ];
 
 export const contact = {
-  email: "samet@sametkorkmaz.dev",
+  email: "samet.k7q2@sametkorkmaz.dev",
   github: "https://github.com/Sametkorkmazz",
   linkedin: "https://www.linkedin.com/in/samet-korkmaz-dev",
 } as const;
